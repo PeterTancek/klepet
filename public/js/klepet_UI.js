@@ -1,5 +1,15 @@
 function divElementEnostavniTekst(sporocilo) {
   var jeSmesko = sporocilo.indexOf('http://sandbox.lavbic.net/teaching/OIS/gradivo/') > -1;
+  
+  //---------------------------------------------------------------------------------- naloga 2
+  var jeSlika = sporocilo.indexOf('.jpg') > -1 || sporocilo.indexOf('.gif') > -1 || sporocilo.indexOf('.png') > -1;
+  
+  if(jeSlika){
+    sporocilo = sporocilo.replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />').replace('gif\' /&gt;', 'gif\' />');
+    return $('<div style="font-weight: bold"></div>').html(sporocilo);
+  }
+  //---------------------------------------------------------------------------------- naloga 2
+  
   if (jeSmesko) {
     sporocilo = sporocilo.replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />');
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
@@ -15,6 +25,9 @@ function divElementHtmlTekst(sporocilo) {
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
   sporocilo = dodajSmeske(sporocilo);
+  
+  sporocilo = dodajSliko(sporocilo); //-------------------------------------------- naloga 2
+  
   var sistemskoSporocilo;
 
   if (sporocilo.charAt(0) == '/') {
@@ -121,6 +134,24 @@ $(document).ready(function() {
   
 });
 
+// --------------------------------------------------------- naloga 2
+
+function dodajSliko(vhodnoBesedilo) {
+  var scan = "";
+  var slika = vhodnoBesedilo.match(new RegExp(/https?:\/\/.*?\.(jpg|png|gif)/gi));
+   
+  for(var i = 0; i<slika.length; i++) {
+    if(!(slika[i].indexOf("http://sandbox.lavbic.net/teaching/OIS/gradivo/") > -1)) { 
+      scan += "<img src='"+ slika[i] + "' style='width:200px; margin-left:20px;' />";
+    }
+    
+  }
+  vhodnoBesedilo += scan;
+  return vhodnoBesedilo;
+}
+//---------------------------------------------------------- naloga 2
+
+
 function dodajSmeske(vhodnoBesedilo) {
   var preslikovalnaTabela = {
     ";)": "wink.png",
@@ -136,3 +167,4 @@ function dodajSmeske(vhodnoBesedilo) {
   }
   return vhodnoBesedilo;
 }
+
