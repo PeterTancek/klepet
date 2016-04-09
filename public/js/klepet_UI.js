@@ -1,20 +1,33 @@
 function divElementEnostavniTekst(sporocilo) {
   var jeSmesko = sporocilo.indexOf('http://sandbox.lavbic.net/teaching/OIS/gradivo/') > -1;
-  var jeSlika = sporocilo.indexOf('.jpg') > -1 || sporocilo.indexOf('.gif') > -1 || sporocilo.indexOf('.png') > -1;
   
-   //---------------------------------------------------------------------------------- naloga 2
-
+  
+  //---------------------------------------------------------------------------------- naloga 2
+  var jeSlika = sporocilo.indexOf('.jpg') > -1 || sporocilo.indexOf('.gif') > -1 || sporocilo.indexOf('.png') > -1;
   if(jeSlika){
     sporocilo = sporocilo.replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />').replace('gif\' /&gt;', 'gif\' />');
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   }
   //---------------------------------------------------------------------------------- naloga 2
   
-  if (jeSmesko) {
+  else if (jeSmesko) {
     sporocilo = sporocilo.replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />');
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   } else {
     return $('<div style="font-weight: bold;"></div>').text(sporocilo);
+  }
+ 
+}
+function test(sporocilo) {
+  var jeSmesko = sporocilo.indexOf('http://sandbox.lavbic.net/teaching/OIS/gradivo/') > -1;
+  var jeSlika = sporocilo.indexOf('.jpg') > -1 || sporocilo.indexOf('.gif') > -1 || sporocilo.indexOf('.png') > -1;
+  if(jeSlika){
+    return 1;
+  }
+  else if (jeSmesko) {
+    return 2;
+  } else {
+    return 3;
   }
  
 }
@@ -26,9 +39,16 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
-  sporocilo = dodajSmeske(sporocilo) ||  dodajSliko(sporocilo); //-------------------------------------------- naloga 2
   
- 
+  //----------------------------------------------------------------- naloga 2
+  if(test(sporocilo) == 1){
+    sporocilo = dodajSliko(sporocilo);
+  }
+  else {
+    sporocilo = dodajSmeske(sporocilo);
+  }
+  
+  //------------------------------------------------------------------ naloga 2
   
   var sistemskoSporocilo;
 
