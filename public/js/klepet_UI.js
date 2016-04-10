@@ -164,7 +164,7 @@ function dodajSliko(vhodnoBesedilo) {
    
   for(var i = 0; i<slika.length; i++) {
     if(!(slika[i].indexOf("http://sandbox.lavbic.net/teaching/OIS/gradivo/") > -1)) { 
-      scan += "<img src='"+ slika[i] + "' style='width:200px; margin-left:20px;' />";
+      scan += "<img src='"+ slika[i] + "' class ='slika' />";
     }
     
   }
