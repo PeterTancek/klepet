@@ -73,8 +73,19 @@ a {
   height:150px;
   margin-left:20px;
 }
+<<<<<<< HEAD
 .slika{
   width:200px;
   margin-left:20px;
 >>>>>>> slike
+=======
+.video{
+  width:200px;
+  height:150px;
+  margin-left:20px;
+}
+.slika{
+  width:200px;
+  margin-left:20px;
+>>>>>>> youtube
 }
