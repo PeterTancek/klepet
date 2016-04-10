@@ -7,6 +7,17 @@ a {
   color: #00B7FF;
 }
 
+.video{
+  width:200px;
+  height:150px;
+  margin-left:20px;
+}
+
+.slika{
+  width:200px;
+  margin-left:20px;
+}
+
 #vsebina {
   width: 100%;
   margin-left: auto;
@@ -65,27 +76,5 @@ a {
 
 #pomoc {
   font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
-<<<<<<< HEAD
-=======
 }
-.video{
-  width:200px;
-  height:150px;
-  margin-left:20px;
-}
-<<<<<<< HEAD
-.slika{
-  width:200px;
-  margin-left:20px;
->>>>>>> slike
-=======
-.video{
-  width:200px;
-  height:150px;
-  margin-left:20px;
-}
-.slika{
-  width:200px;
-  margin-left:20px;
->>>>>>> youtube
-}
+
